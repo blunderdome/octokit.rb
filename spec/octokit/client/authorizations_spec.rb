@@ -6,6 +6,8 @@ describe Octokit::Client::Authorizations do
     Octokit.reset!
     @client = basic_auth_client
 
+    p @client.inspect
+
     @app_client = Octokit::Client.new \
       :client_id     => test_github_client_id,
       :client_secret => test_github_client_secret
