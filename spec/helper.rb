@@ -234,27 +234,11 @@ def basic_auth_client(login = test_github_login, password = test_github_password
   client.login = test_github_login
   client.password = test_github_password
 
-  stack = Faraday::RackBuilder.new do |builder|
-      builder.response :logger
-        builder.use Octokit::Response::RaiseError
-          builder.adapter Faraday.default_adapter
-  end
-  client.middleware = stack
-
   client
 end
 
 def oauth_client
-  client = Octokit::Client.new(:access_token => test_github_token)
-
-  stack = Faraday::RackBuilder.new do |builder|
-      builder.response :logger
-        builder.use Octokit::Response::RaiseError
-          builder.adapter Faraday.default_adapter
-  end
-  client.middleware = stack
-
-  client
+  Octokit::Client.new(:access_token => test_github_token)
 end
 
 def enterprise_admin_client
