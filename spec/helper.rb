@@ -230,6 +230,7 @@ def basic_github_url(path, options = {})
 end
 
 def basic_auth_client(login = test_github_login, password = test_github_password )
+  Octokit.reset!
   client = Octokit::Client.new
   client.login = test_github_login
   client.password = test_github_password
@@ -238,6 +239,7 @@ def basic_auth_client(login = test_github_login, password = test_github_password
 end
 
 def oauth_client
+  Octokit.reset!
   Octokit::Client.new(:access_token => test_github_token)
 end
 
